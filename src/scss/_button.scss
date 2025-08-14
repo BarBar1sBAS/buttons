@@ -1,0 +1,46 @@
+// Импорт переменных и миксинов
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Компонент Button (БЭМ)
+.button {
+  @include button-base;
+
+  // Элементы
+  &__icon {
+    width: $icon-size;
+    height: $icon-size;
+    flex-shrink: 0;
+    transition: fill $transition-duration $transition-timing;
+  }
+
+  &__text {
+    white-space: nowrap;
+  }
+
+  // Модификаторы размеров
+  &--size-l {
+    @include button-size-l;
+  }
+
+  &--size-m {
+    @include button-size-m;
+  }
+
+  &--size-s {
+    @include button-size-s;
+  }
+
+  // Модификаторы цветов
+  &--primary {
+    @include button-color-primary;
+  }
+
+  &--secondary {
+    @include button-color-secondary;
+  }
+
+  &--danger {
+    @include button-color-danger;
+  }
+}

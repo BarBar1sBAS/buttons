@@ -1,0 +1,78 @@
+// Цвета
+// Primary
+$primary-bg-default: #272733;
+$primary-bg-hover: #151515;
+$primary-bg-press: #151515;
+$primary-bg-focus: #151515;
+
+$primary-text-default: #ffffff;
+$primary-text-hover: #ffffff;
+$primary-text-press: rgba(255, 255, 255, 0.72);
+$primary-text-focus: #ffffff;
+
+// Secondary
+$secondary-bg-default: #edf2f4;
+$secondary-bg-hover: #e2ebee;
+$secondary-bg-press: #e2ebee;
+$secondary-bg-focus: #e2ebee;
+
+$secondary-text-default: #272733;
+$secondary-text-hover: #272733;
+$secondary-text-press: rgba(30, 30, 30, 0.64);
+$secondary-text-focus: #272733;
+
+// Danger
+$danger-bg-default: #e52421;
+$danger-bg-hover: #d80f16;
+$danger-bg-press: #d80f16;
+$danger-bg-focus: #d80f16;
+
+$danger-text-default: #ffffff;
+$danger-text-hover: #ffffff;
+$danger-text-press: rgba(255, 255, 255, 0.72);
+$danger-text-focus: #ffffff;
+
+// Disabled (общий для всех цветов)
+$disabled-bg: #efefef;
+$disabled-text: #a6a6a6;
+
+// Focus stroke
+$focus-stroke: #c5d1f7;
+
+// Размеры кнопок
+// Size L
+$size-l-height: 48px;
+$size-l-padding-vertical: 12px;
+$size-l-padding-horizontal: 16px;
+$size-l-border-radius: 8px;
+$size-l-font-weight: 600; // semibold
+$size-l-font-size: 14px;
+$size-l-line-height: 20px;
+
+// Size M
+$size-m-height: 36px;
+$size-m-padding-vertical: 8px;
+$size-m-padding-horizontal: 12px;
+$size-m-border-radius: 8px;
+$size-m-font-weight: 600; // semibold
+$size-m-font-size: 14px;
+$size-m-line-height: 20px;
+
+// Size S
+$size-s-height: 28px;
+$size-s-padding-vertical: 2px;
+$size-s-padding-horizontal: 8px;
+$size-s-border-radius: 4px;
+$size-s-font-weight: 400; // regular
+$size-s-font-size: 14px;
+$size-s-line-height: 20px;
+
+// Общие параметры
+$font-family: 'IBM Plex Sans', sans-serif;
+$icon-size: 20px;
+$gap-between-elements: 4px;
+$focus-outline-width: 4px;
+
+// Переходы
+$transition-duration: 0.2s;
+$transition-timing: ease-in-out;

@@ -1,0 +1,29 @@
+{
+  "name": "buttons-component",
+  "version": "1.0.0",
+  "description": "Система кнопок с использованием SCSS, БЭМ методологии и webpack",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development"
+  },
+  "keywords": ["buttons", "scss", "bem", "webpack"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "html-webpack-plugin": "^5.5.3",
+    "css-loader": "^6.8.1",
+    "sass-loader": "^14.0.0",
+    "sass": "^1.70.0",
+    "style-loader": "^3.3.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "postcss-loader": "^7.3.3"
+  },
+  "dependencies": {}
+}
