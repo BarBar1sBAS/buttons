@@ -1,71 +1,99 @@
-// Цвета
-// Primary
-$primary-bg-default: #272733;
-$primary-bg-hover: #151515;
-$primary-bg-press: #151515;
-$primary-bg-focus: #151515;
+// Базовые цвета
+$color-white: #ffffff;
+$color-dark: #272733;
+$color-dark-hover: #151515;
+$color-gray-light: #edf2f4;
+$color-gray-hover: #e2ebee;
+$color-red: #e52421;
+$color-red-hover: #d80f16;
+$color-disabled-bg: #efefef;
+$color-disabled-text: #a6a6a6;
+$color-focus-stroke: #c5d1f7;
 
-$primary-text-default: #ffffff;
-$primary-text-hover: #ffffff;
-$primary-text-press: rgba(255, 255, 255, 0.72);
-$primary-text-focus: #ffffff;
+// Альфа-канал для pressed состояний
+$alpha-pressed-light: rgba(255, 255, 255, 0.72);
+$alpha-pressed-dark: rgba(30, 30, 30, 0.64);
 
-// Secondary
-$secondary-bg-default: #edf2f4;
-$secondary-bg-hover: #e2ebee;
-$secondary-bg-press: #e2ebee;
-$secondary-bg-focus: #e2ebee;
+// Оптимизированные цветовые темы кнопок
+$button-themes: (
+  primary: (
+    bg: (
+      default: $color-dark,
+      interactive: $color-dark-hover  // hover, press, focus одинаковые
+    ),
+    text: (
+      default: $color-white,
+      hover: $color-white,
+      press: $alpha-pressed-light,
+      focus: $color-white
+    )
+  ),
+  secondary: (
+    bg: (
+      default: $color-gray-light,
+      interactive: $color-gray-hover  // hover, press, focus одинаковые
+    ),
+    text: (
+      default: $color-dark,
+      hover: $color-dark,
+      press: $alpha-pressed-dark,
+      focus: $color-dark
+    )
+  ),
+  danger: (
+    bg: (
+      default: $color-red,
+      interactive: $color-red-hover  // hover, press, focus одинаковые
+    ),
+    text: (
+      default: $color-white,
+      hover: $color-white,
+      press: $alpha-pressed-light,
+      focus: $color-white
+    )
+  )
+);
 
-$secondary-text-default: #272733;
-$secondary-text-hover: #272733;
-$secondary-text-press: rgba(30, 30, 30, 0.64);
-$secondary-text-focus: #272733;
+// Общие цвета (используем базовые переменные)
+$disabled-bg: $color-disabled-bg;
+$disabled-text: $color-disabled-text;
+$focus-stroke: $color-focus-stroke;
 
-// Danger
-$danger-bg-default: #e52421;
-$danger-bg-hover: #d80f16;
-$danger-bg-press: #d80f16;
-$danger-bg-focus: #d80f16;
+// Базовые значения для размеров (убираем дубли)
+$border-radius-default: 8px;
+$border-radius-small: 4px;
+$font-size-button: 14px;
+$line-height-button: 20px;
+$font-weight-semibold: 600;
+$font-weight-regular: 400;
 
-$danger-text-default: #ffffff;
-$danger-text-hover: #ffffff;
-$danger-text-press: rgba(255, 255, 255, 0.72);
-$danger-text-focus: #ffffff;
-
-// Disabled (общий для всех цветов)
-$disabled-bg: #efefef;
-$disabled-text: #a6a6a6;
-
-// Focus stroke
-$focus-stroke: #c5d1f7;
-
-// Размеры кнопок
-// Size L
-$size-l-height: 48px;
-$size-l-padding-vertical: 12px;
-$size-l-padding-horizontal: 16px;
-$size-l-border-radius: 8px;
-$size-l-font-weight: 600; // semibold
-$size-l-font-size: 14px;
-$size-l-line-height: 20px;
-
-// Size M
-$size-m-height: 36px;
-$size-m-padding-vertical: 8px;
-$size-m-padding-horizontal: 12px;
-$size-m-border-radius: 8px;
-$size-m-font-weight: 600; // semibold
-$size-m-font-size: 14px;
-$size-m-line-height: 20px;
-
-// Size S
-$size-s-height: 28px;
-$size-s-padding-vertical: 2px;
-$size-s-padding-horizontal: 8px;
-$size-s-border-radius: 4px;
-$size-s-font-weight: 400; // regular
-$size-s-font-size: 14px;
-$size-s-line-height: 20px;
+// Размеры кнопок (оптимизированные, без дублей)
+$button-sizes: (
+  l: (
+    height: 48px,
+    padding: 12px 16px,
+    border-radius: $border-radius-default,
+    font-weight: $font-weight-semibold,
+    font-size: $font-size-button,
+    line-height: $line-height-button
+  ),
+  m: (
+    height: 36px,
+    padding: 8px 12px,
+    border-radius: $border-radius-default,
+    font-weight: $font-weight-semibold,
+    font-size: $font-size-button,
+    line-height: $line-height-button
+  ),
+  s: (
+    height: 28px,
+    padding: 2px 8px,
+    border-radius: $border-radius-small,
+    font-weight: $font-weight-regular,
+    font-size: $font-size-button,
+    line-height: $line-height-button
+  )
+);
 
 // Общие параметры
 $font-family: 'IBM Plex Sans', sans-serif;
@@ -76,3 +104,22 @@ $focus-outline-width: 4px;
 // Переходы
 $transition-duration: 0.2s;
 $transition-timing: ease-in-out;
+
+// Дополнительные цвета для UI
+$color-bg-demo: #f5f5f5;
+$color-bg-card: #ffffff;
+$color-text-subtitle: #555555;
+$color-shadow: rgba(0, 0, 0, 0.1);
+
+// Spacing система
+$spacing-xs: 8px;
+$spacing-s: 15px;
+$spacing-m: 20px;
+$spacing-l: 40px;
+
+// Размеры для UI
+$max-width-demo: 1200px;
+$border-radius-card: 8px;
+$font-size-title: 24px;
+$font-size-subtitle: 18px;
+$box-shadow-card: 0 2px 8px $color-shadow;

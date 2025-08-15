@@ -1,5 +1,16 @@
 // Импорт переменных
 @use 'variables' as *;
+@use 'sass:map';
+
+// Функция для получения значения из темы кнопки
+@function get-theme-value($theme, $property, $state: default) {
+  @return map.get($button-themes, $theme, $property, $state);
+}
+
+// Функция для получения значения размера кнопки
+@function get-size-value($size, $property) {
+  @return map.get($button-sizes, $size, $property);
+}
 
 // Миксин для базовых стилей кнопки
 @mixin button-base {
@@ -44,143 +55,76 @@
   }
 }
 
-// Миксин для размера L
-@mixin button-size-l {
-  height: $size-l-height;
-  padding: $size-l-padding-vertical $size-l-padding-horizontal;
-  border-radius: $size-l-border-radius;
-  font-weight: $size-l-font-weight;
-  font-size: $size-l-font-size;
-  line-height: $size-l-line-height;
+// Универсальный миксин для размеров кнопки
+@mixin button-size($size) {
+  height: get-size-value($size, height);
+  padding: get-size-value($size, padding);
+  border-radius: get-size-value($size, border-radius);
+  font-weight: get-size-value($size, font-weight);
+  font-size: get-size-value($size, font-size);
+  line-height: get-size-value($size, line-height);
 }
 
-// Миксин для размера M
-@mixin button-size-m {
-  height: $size-m-height;
-  padding: $size-m-padding-vertical $size-m-padding-horizontal;
-  border-radius: $size-m-border-radius;
-  font-weight: $size-m-font-weight;
-  font-size: $size-m-font-size;
-  line-height: $size-m-line-height;
-}
-
-// Миксин для размера S
-@mixin button-size-s {
-  height: $size-s-height;
-  padding: $size-s-padding-vertical $size-s-padding-horizontal;
-  border-radius: $size-s-border-radius;
-  font-weight: $size-s-font-weight;
-  font-size: $size-s-font-size;
-  line-height: $size-s-line-height;
-}
-
-// Миксин для цвета Primary
-@mixin button-color-primary {
-  background-color: $primary-bg-default;
-  color: $primary-text-default;
+// Универсальный миксин для цвета кнопки (оптимизированный)
+@mixin button-color($theme) {
+  background-color: get-theme-value($theme, bg, default);
+  color: get-theme-value($theme, text, default);
 
   .button__icon {
-    fill: $primary-text-default;
+    fill: get-theme-value($theme, text, default);
   }
 
-  &:hover:not(:disabled) {
-    background-color: $primary-bg-hover;
-    color: $primary-text-hover;
+  // Для bg используем interactive (так как hover, press, focus одинаковые)
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    background-color: get-theme-value($theme, bg, interactive);
+    color: get-theme-value($theme, text, hover);
 
     .button__icon {
-      fill: $primary-text-hover;
+      fill: get-theme-value($theme, text, hover);
     }
   }
 
   &:active:not(:disabled) {
-    background-color: $primary-bg-press;
-    color: $primary-text-press;
+    background-color: get-theme-value($theme, bg, interactive);
+    color: get-theme-value($theme, text, press);
 
     .button__icon {
-      fill: $primary-text-press;
-    }
-  }
-
-  &:focus-visible:not(:disabled) {
-    background-color: $primary-bg-focus;
-    color: $primary-text-focus;
-
-    .button__icon {
-      fill: $primary-text-focus;
+      fill: get-theme-value($theme, text, press);
     }
   }
 }
 
-// Миксин для цвета Secondary
-@mixin button-color-secondary {
-  background-color: $secondary-bg-default;
-  color: $secondary-text-default;
-
-  .button__icon {
-    fill: $secondary-text-default;
-  }
-
-  &:hover:not(:disabled) {
-    background-color: $secondary-bg-hover;
-    color: $secondary-text-hover;
-
-    .button__icon {
-      fill: $secondary-text-hover;
-    }
-  }
-
-  &:active:not(:disabled) {
-    background-color: $secondary-bg-press;
-    color: $secondary-text-press;
-
-    .button__icon {
-      fill: $secondary-text-press;
-    }
-  }
-
-  &:focus-visible:not(:disabled) {
-    background-color: $secondary-bg-focus;
-    color: $secondary-text-focus;
-
-    .button__icon {
-      fill: $secondary-text-focus;
-    }
-  }
+// Комплексный миксин для создания полной кнопки одной строкой
+@mixin button($size: m, $theme: primary) {
+  @include button-base;
+  @include button-size($size);
+  @include button-color($theme);
 }
 
-// Миксин для цвета Danger
-@mixin button-color-danger {
-  background-color: $danger-bg-default;
-  color: $danger-text-default;
+// Утилитарные миксины для переиспользования
+@mixin card-shadow {
+  box-shadow: $box-shadow-card;
+}
 
-  .button__icon {
-    fill: $danger-text-default;
-  }
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  &:hover:not(:disabled) {
-    background-color: $danger-bg-hover;
-    color: $danger-text-hover;
+@mixin text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .button__icon {
-      fill: $danger-text-hover;
-    }
-  }
-
-  &:active:not(:disabled) {
-    background-color: $danger-bg-press;
-    color: $danger-text-press;
-
-    .button__icon {
-      fill: $danger-text-press;
-    }
-  }
-
-  &:focus-visible:not(:disabled) {
-    background-color: $danger-bg-focus;
-    color: $danger-text-focus;
-
-    .button__icon {
-      fill: $danger-text-focus;
-    }
-  }
+// Responsive миксин для spacing
+@mixin spacing($property, $size) {
+  #{$property}: map.get((
+    xs: $spacing-xs,
+    s: $spacing-s,
+    m: $spacing-m,
+    l: $spacing-l
+  ), $size);
 }

@@ -20,27 +20,27 @@
 
   // Модификаторы размеров
   &--size-l {
-    @include button-size-l;
+    @include button-size(l);
   }
 
   &--size-m {
-    @include button-size-m;
+    @include button-size(m);
   }
 
   &--size-s {
-    @include button-size-s;
+    @include button-size(s);
   }
 
   // Модификаторы цветов
   &--primary {
-    @include button-color-primary;
+    @include button-color(primary);
   }
 
   &--secondary {
-    @include button-color-secondary;
+    @include button-color(secondary);
   }
 
   &--danger {
-    @include button-color-danger;
+    @include button-color(danger);
   }
 }
